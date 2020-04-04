@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{F2CN:function(n,e,t){"use strict";t.r(e);t("q1tI");var u=t("qKvR");e.default=function(){return Object(u.c)("h1",null,"resume page")}}}]);
+//# sourceMappingURL=component---src-pages-resume-js-78cdc2c1b44cfb12d53d.js.map
