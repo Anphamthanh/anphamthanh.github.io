@@ -74,7 +74,9 @@ export class Sidebar extends Component {
         </div>
         <div className="navbar-nav">
           <div className="nav-item">
-            <a className="nav-link" href="/">📚 Blog</a>
+            <a className="nav-link" href="/">
+              <span role="img" aria-label="books">📚</span> Blog
+            </a>
           </div>
         </div>
       </nav>
