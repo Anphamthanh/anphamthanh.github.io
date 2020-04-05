@@ -1,14 +1,8 @@
 module.exports = {
   plugins: [
-    `@pauliescanlon/gatsby-mdx-embed`,
     {
       resolve: `gatsby-theme-blog`,
-      options: {},
-    },
-    {
-      resolve: `gatsby-theme-notes`,
       options: {
-        basePath: `/notes`,
       },
     },
     {
@@ -39,8 +33,8 @@ module.exports = {
     description: `Trying out blogging as a hobby...`,
     social: [
       {
-        name: `github`,
-        url: `https://github.com/gatsbyjs`,
+        name: `gitlab`,
+        url: `https://gitlab.com/Anphamthanh`,
       },
     ],
   },
