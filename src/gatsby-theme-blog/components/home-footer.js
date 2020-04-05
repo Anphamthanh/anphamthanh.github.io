@@ -2,8 +2,8 @@ import React, { Fragment } from "react"
 
 export default () => (
       <Fragment>
-        This is my updated bio.
+        <i>Saving the present findings for the future me...</i>
         <br />
-        It's shadowing the content from the theme.
+        <i>All rights reserved</i>
       </Fragment>
 )

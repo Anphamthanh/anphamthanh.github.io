@@ -1,14 +1,10 @@
 import React, { Fragment } from "react"
-import { Styled } from "theme-ui"
 import { Link } from "gatsby"
 
 export default () => (
   <Fragment>
-    This is where <Styled.a href="http://example.com/resume">your name</Styled.a>
-    {` `}
-    goes.
-      <Link to="resume">some</Link>
+    <Link to="resume">An Pham</Link>'s Personal Blog
     <br />
-    Or whatever, you make the rules.
+    An enthusiastic software engineer who genuinely enjoys life. 😍
   </Fragment>
 )

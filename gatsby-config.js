@@ -12,6 +12,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `resumes`,
+        path: `${__dirname}/content/resumes`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -25,6 +32,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/content/resumes`
+      },
+    },
   ],
   // Customize your site metadata:
   siteMetadata: {
@@ -33,7 +46,7 @@ module.exports = {
     description: `Trying out blogging as a hobby...`,
     social: [
       {
-        name: `gitlab`,
+        name: `GitHub`,
         url: `https://gitlab.com/Anphamthanh`,
       },
     ],

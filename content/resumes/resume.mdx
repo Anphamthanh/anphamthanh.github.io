@@ -1,0 +1,46 @@
+import { css, Styled } from "theme-ui"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+
+import Layout from "gatsby-theme-blog/src/components/layout"
+import SEO from "gatsby-theme-blog/src/components/seo"
+
+export default ({ children }) => (
+  <Layout location="/resume" title="My Blog">
+    <SEO title="My Resume" description="An Pham, Resume, CV, anphamthanh" />
+    <main>
+      <Styled.h1>An Pham</Styled.h1>
+      {children}
+    </main>
+		<i>Life is like riding a bicycle. To keep your balance, you must keep moving...🚲</i>
+  </Layout>
+)
+
+### 💼 Core Qualifications
+I understand what engineering team can bring to the table and experienced in using technology to drive in business values
+
+- Able to **build and lead your engineering organization** to drive successful deliverables
+- A competitive programmer in modern programming languages including **Go, Ruby, Python, Rust**
+- Experienced in building **highly available and fault tolerant** distritbuted systems
+- Experienced in building/migrating applications with **micro-service architecture**
+- Experienced in dealing with different types of databases including **SQL and NoSQL**
+- A quick learner and builder, I am able to build usable products quickly utilizing existing stacks
+- A **very hungry learner**! I am very fascinated by the new technology and their applications
+
+### 💻 Work Experience
+
+<span>
+	Head of Engineering &#45; Tiki Corp., Ho Chi Minh City, Vietnam
+</span>
+      <Styled.p
+        css={css({
+          fontSize: 1,
+          mt: -3,
+          mb: 3,
+        })}
+      >
+        {post.date}
+      </Styled.p>
+<span>
+	October 2019 &#45; Now
+</span>
+
