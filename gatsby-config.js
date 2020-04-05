@@ -12,13 +12,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `resumes`,
-        path: `${__dirname}/content/resumes`,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -31,13 +24,8 @@ module.exports = {
         display: `standalone`,
       },
     },
-    `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-page-creator`,
-      options: {
-        path: `${__dirname}/content/resumes`
-      },
-    },
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-offline`
   ],
   // Customize your site metadata:
   siteMetadata: {
