@@ -182,7 +182,7 @@ const IndexPage = () => (
 
           <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
             <div className="resume-content">
-              <h3 className="mb-0">Software Engineer CO-OP</h3>
+              <h3 className="mb-0">Software Engineer</h3>
               <div className="subheading mb-3"><a href="https://ultimatesoftware.com">Ultimate Software</a> Inc., Weston, Florida, U.S.A.</div>
               <p>
                 Ultimate Software is an American technology company that develops and sells UltiPro,
@@ -203,7 +203,7 @@ const IndexPage = () => (
 
           <div className="resume-item d-flex flex-column flex-md-row justify-content-between">
             <div className="resume-content">
-              <h3 className="mb-0">Software Developer CO-OP</h3>
+              <h3 className="mb-0">Software Developer</h3>
               <div className="subheading mb-3"><a href="https://openspan.com">OpenSpan</a> Inc., Atlanta, Georgia, U.S.A.</div>
               <p>
                 OpenSpan focuses on desktop automation, it has the niche market
