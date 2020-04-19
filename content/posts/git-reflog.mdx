@@ -1,0 +1,46 @@
+---
+title: A Life-Saver Git Command
+date: 2020-02-01
+---
+
+Git is now a ubiquitous skill to any software engineer. To a newbie, Git flow is full of new trickeries, concepts, and gotchas. Fear not, you don't have to be a Git guru to tame Git to your workflow. My advice to move fast is NOT spending too much time to be a Git expert, but instead, read the git manual to understand the fundamentals so you can get the job done, and occasionally, get yourself out of troubles. Today, I am in big trouble.
+
+#### The setup
+
+* My repo has a branch named **`develop`**
+* My repo also has a dir name **`deployment`**
+* I am working on a branch named **`release-X`**
+* On my local, I had some commits that I **haven't** pushed to GitHub
+* I staged all the latest changes in the current repo, ready to commit
+
+#### The disaster
+
+1. I noticed that I don't want to include changes in the `deployment` dir, so I'd like to run `git reset deployment`
+1. But instead, I typed, `git reset de<Tab><Enter>`, my fingers were too fast to handle 😭
+1. The command above auto-completed into `git reset develop`
+1. This moved my HEAD to my local develop branch → I **can't** get back to the tip of my local branch **`release-X`**
+1. To get back to where I was on my local branch **`release-X`**, I need to know its commit hash which I don't
+
+#### The rescue
+
+Luckily, Git keeps a log of all ref updates, so to get the commit hashes,
+
+```bash
+git reflog
+```
+
+This will output something like,
+
+```bash
+39ab761 HEAD@{0}: reset: moving to HEAD~1
+b55c098 HEAD@{1}: A very interesting commit...
+...
+```
+
+Now I can simply scan the log to find the commit hash that I want to return to, and once I find it, simply run
+
+```bash
+git reset <hash>
+```
+
+And voila!, I am back with no commit lost, and all the local changes are ready to be committed again 🥰. This is a simple command, but if you don't know it, you willl have a panic attack when things hit you. And in the long run, you are likely to develop heart-related health issues if you also have fast fingers like mine.
