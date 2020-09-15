@@ -7,7 +7,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && cp CNAME public && gh-pages -d public -b master"
+    "deploy": "gatsby clean && gatsby build && cp CNAME public && gh-pages -d public -b master"
   },
   "dependencies": {
     "gatsby": "^2.19.45",
