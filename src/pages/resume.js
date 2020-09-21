@@ -372,9 +372,6 @@ const IndexPage = () => (
                 <li>Gamma Beta Phi Honor Society Member</li>
               </ul>
             </div>
-            <div className="resume-date text-md-right">
-              <span className="text-primary">August 2006 - May 2010</span>
-            </div>
           </div>
         </div>
       </section>
