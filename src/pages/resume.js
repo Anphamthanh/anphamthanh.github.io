@@ -112,7 +112,7 @@ const IndexPage = () => (
 
           <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
             <div className="resume-content">
-              <h3 className="mb-0">Head of Engineering</h3>
+              <h3 className="mb-0">Director of Software Engineering</h3>
               <div className="subheading mb-3">
                 <a href="https://tiki.vn">TIKI Corporation</a>, Ho Chi Minh
                 City, Vietnam
@@ -122,9 +122,41 @@ const IndexPage = () => (
                 its way to be a new unicorn of South East Asia. At TIKI, I am
                 <ul>
                   <li>
-                    In charge of building Tiki social-ecommerce platform and a
-                    marketplace for digital services
+                    In charge of building Tiki Luot, a social-ecommerce network
+                    connecting seller and buyer and it is a new form of market
+                    place for Tiki.
                   </li>
+                  <li>
+                    In charge of building Tiki mini-app platform . This is an
+                    effort to turn Tiki into a super app, on which new business
+                    can build app to take advantage of the customer base,
+                    payment service and excellent delivery service that Tiki
+                    has.
+                  </li>
+                  <li>
+                    Techstack: <b>Go, React, Postgres, Redis, AWS...</b>
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div className="resume-date text-md-right">
+              <span className="text-primary">October 2020 - Present</span>
+            </div>
+          </div>
+
+          <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div className="resume-content">
+              <h3 className="mb-0">Head of Engineering</h3>
+              <div className="subheading mb-3">
+                <a href="https://tiki.vn">TicketBox Inc., TIKI Corporation</a>,
+                Ho Chi Minh City, Vietnam
+              </div>
+              <p>
+                TicketBox is the No. 1 ticketing platform in Vietnam. After
+                being acquired by Tiki, TicketBox has the oppurtunitity to
+                expand it customer base and offer many more attracting services.
+                At TicketBox/Tiki, I
+                <ul>
                   <li>
                     Was in charge of the deliverables of the engineering team of{" "}
                     <a href="https://ticketbox.vn">TicketBox</a> Pte Ltd. - a
@@ -135,13 +167,16 @@ const IndexPage = () => (
                     and social ecommerce platform for TicketBox
                   </li>
                   <li>
+                    In charge of building a digital service platform for Tiki
+                  </li>
+                  <li>
                     Techstack: <b>Go, React, Postgres, Redis, AWS...</b>
                   </li>
                 </ul>
               </p>
             </div>
             <div className="resume-date text-md-right">
-              <span className="text-primary">October 2019 - Present</span>
+              <span className="text-primary">October 2019 - October 2020</span>
             </div>
           </div>
 
