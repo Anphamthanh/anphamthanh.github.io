@@ -22,6 +22,6 @@ module.exports = {
     },
   ],
   email: 'anphamthanh@yahoo.com',
-  phone: 'xxx-xxxxx88',
+  phone: 'xxx-xxxxxxx',
   address: 'Ho Chi Minh City, Viet Nam',
 };

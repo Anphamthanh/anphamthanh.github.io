@@ -394,7 +394,8 @@ const IndexPage = () => (
                 , Atlanta, Georgia, U.S.A
               </h3>
               <div className="subheading mb-3">
-                Bachelor of Science - Summa Cum Laude
+                Bachelor of Science - Summa Cum Laude (Graduated with Highest
+                Honor)
               </div>
               <div>
                 <i>
