@@ -23,13 +23,17 @@ const IndexPage = () => (
             <a href={`mailto:${config.email}`}> {config.email}</a>
           </div>
           <p className="lead mb-5">
-            I am experienced in utilizing technology resource to deliver
-            strategic values. <br />I am highly skilled and knowledgable; I can
-            build or lead your engineering team to implement all your business
-            needs.
+            <i>
+              I am a technology expert and I am experienced in utilizing
+              technology resources to deliver strategic values. With my
+              battle-tested skills and knowledge, I can build and lead your
+              engineering team to implement all your business needs and show you
+              all the possible ways that technology can help to maximize your
+              business potential.
+            </i>
           </p>
           <div className="social-icons">
-            {config.socialLinks.map(social => {
+            {config.socialLinks.map((social) => {
               const { icon, url } = social;
               return (
                 <a key={url} href={url}>
@@ -56,6 +60,19 @@ const IndexPage = () => (
           </h2>
 
           <ul className="fa-ul mb-0">
+            <li>
+              <i className="fa-li fa fa-check"></i>
+              Highly experienced in building internet solution covering from{" "}
+              <b>frontend to backend to infrastructure to DS/AI/ML</b>
+            </li>
+            <li>
+              <i className="fa-li fa fa-check"></i>
+              Experienced in building complex system such as{" "}
+              <b>
+                social networks, ticketing, e-commerce, super app, identity
+                system
+              </b>
+            </li>
             <li>
               <i className="fa-li fa fa-check"></i>
               Able to <b>build and lead your engineering org</b> to drive
@@ -114,27 +131,30 @@ const IndexPage = () => (
             <div className="resume-content">
               <h3 className="mb-0">Director of Software Engineering</h3>
               <div className="subheading mb-3">
-                <a href="https://tiki.vn">TIKI Corporation</a>, Ho Chi Minh
-                City, Vietnam
+                <a href="https://tiki.vn" target="_blank" rel="noreferrer">
+                  TIKI Corporation
+                </a>
+                , Ho Chi Minh City, Vietnam
               </div>
               <p>
-                TIKI is the leading ecommerce platform in Vietnam and it is on
+                TIKI is the leading e-commerce platform in Vietnam and it is on
                 its way to be a new unicorn of South East Asia. At TIKI, I am
                 <ul>
                   <li>
-                    In charge of building Tiki Luot, a social-ecommerce network
-                    connecting seller and buyer and it is a new form of market
-                    place for Tiki.
+                    In charge of building Tiki Luot, a social-commerce network
+                    connecting seller and buyer and it is the new form of a
+                    marketplace for Tiki.
                   </li>
                   <li>
-                    In charge of building Tiki mini-app platform . This is an
-                    effort to turn Tiki into a super app, on which new business
-                    can build app to take advantage of the customer base,
-                    payment service and excellent delivery service that Tiki
-                    has.
+                    In charge of building Tiki mini-app platform backend. This
+                    is an effort to turn Tiki into a super app, on which new
+                    businesses can build apps to take advantage of the customer
+                    base, payment service, and excellent delivery service that
+                    Tiki has.
                   </li>
                   <li>
-                    Techstack: <b>Go, React, Postgres, Redis, AWS...</b>
+                    Techstack:{" "}
+                    <b>Go, React, React Native, Postgres, Redis, AWS...</b>
                   </li>
                 </ul>
               </p>
@@ -148,26 +168,42 @@ const IndexPage = () => (
             <div className="resume-content">
               <h3 className="mb-0">Head of Engineering</h3>
               <div className="subheading mb-3">
-                <a href="https://tiki.vn">TicketBox Inc., TIKI Corporation</a>,
-                Ho Chi Minh City, Vietnam
+                <a href="https://tiki.vn" target="_blank" rel="noreferrer">
+                  TicketBox Inc., TIKI Corporation
+                </a>
+                , Ho Chi Minh City, Vietnam
               </div>
               <p>
                 TicketBox is the No. 1 ticketing platform in Vietnam. After
-                being acquired by Tiki, TicketBox has the oppurtunitity to
-                expand it customer base and offer many more attracting services.
-                At TicketBox/Tiki, I
+                being acquired by Tiki, TicketBox has the opportunity to expand
+                its customer base and offer many more attractive services. I was
+                hired to head the engineering at TicketBox and leading the
+                integration of the TicketBox system into Tiki. At
+                TicketBox/Tiki, I
                 <ul>
                   <li>
                     Was in charge of the deliverables of the engineering team of{" "}
-                    <a href="https://ticketbox.vn">TicketBox</a> Pte Ltd. - a
-                    subsidiary company of TIKI
+                    <a
+                      href="https://ticketbox.vn"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      TicketBox
+                    </a>{" "}
+                    Pte Ltd. - a subsidiary company of TIKI
+                  </li>
+                  <li>
+                    Was in charge of integrating TicketBox existing system into
+                    Tiki's eco-system
                   </li>
                   <li>
                     Designed infrastructure and implement the ticketing platform
-                    and social ecommerce platform for TicketBox
+                    and social e-commerce platform for TicketBox
                   </li>
                   <li>
-                    In charge of building a digital service platform for Tiki
+                    Was in charge of building a digital service platform for
+                    Tiki to offer customer selection such that billing, online
+                    courses...
                   </li>
                   <li>
                     Techstack: <b>Go, React, Postgres, Redis, AWS...</b>
@@ -184,25 +220,33 @@ const IndexPage = () => (
             <div className="resume-content">
               <h3 className="mb-0">Engineering Lead</h3>
               <div className="subheading mb-3">
-                <a href="https://trustingsocial.com">TrustingSocial</a>, Ho Chi
-                Minh City, Vietnam
+                <a
+                  href="https://trustingsocial.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  TrustingSocial
+                </a>
+                , Ho Chi Minh City, Vietnam
               </div>
               <p>
-                TrustingSocial is a fintech company which advances data science
+                TrustingSocial is a fintech company that advances data science
                 and technology to deliver financial access for all. At
                 TrustingSocial, I
                 <ul>
                   <li>
                     Revived a dead product name{" "}
-                    <a href="https://avay.vn">AVAY</a> and made it another
-                    source of revenue for the company
+                    <a href="https://avay.vn" target="_blank" rel="noreferrer">
+                      AVAY
+                    </a>{" "}
+                    and made it another source of revenue for the company
                   </li>
                   <li>
-                    Lead the most elite team of the company to deliver web-scale
-                    lending platform for the Vietnam's market
+                    Lead the most elite team of the company to deliver a
+                    web-scale lending platform for Vietnam's market
                   </li>
                   <li>
-                    Been keen in identifying bottleneck and actively provided
+                    Was keen on identifying bottleneck and actively provided
                     metrics and solutions for improvements
                   </li>
                   <li>
@@ -211,7 +255,7 @@ const IndexPage = () => (
                   </li>
                   <li>
                     Held the engineering bar and maintained best practices
-                    across organization
+                    across the organization
                   </li>
                   <li>
                     Techstack:{" "}
@@ -227,9 +271,15 @@ const IndexPage = () => (
 
           <div className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
             <div className="resume-content">
-              <h3 className="mb-0">Software Engineer III</h3>
+              <h3 className="mb-0">Senior Software Engineer</h3>
               <div className="subheading mb-3">
-                <a href="https://ultimatesoftware.com">Ultimate Software</a>{" "}
+                <a
+                  href="https://ultimatesoftware.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ultimate Software
+                </a>{" "}
                 Inc., Weston, Florida, U.S.A.
               </div>
               <p>
@@ -240,7 +290,7 @@ const IndexPage = () => (
                 <ul>
                   <li>
                     Was a member of the elite team of three who built the first
-                    cloud platform for UltimateSoftware
+                    cloud platform solution for UltimateSoftware
                   </li>
                   <li>
                     Was in charge of building and maintaining UltimateSoftware's
@@ -254,12 +304,12 @@ const IndexPage = () => (
                     Techstack: <b>Python, Ruby, Go, Zookeeper, OpenStack,...</b>
                   </li>
                 </ul>
-                This project have saved UltimateSoftware millions of dollar in
+                This project saved UltimateSoftware millions of dollars in
                 deployment cost every year.
               </p>
             </div>
             <div className="resume-date text-md-right">
-              <span className="text-primary">March 2015 - February 2018</span>
+              <span className="text-primary">Mar 2014 - February 2018</span>
             </div>
           </div>
 
@@ -267,12 +317,18 @@ const IndexPage = () => (
             <div className="resume-content">
               <h3 className="mb-0">Lead Engineer</h3>
               <div className="subheading mb-3">
-                <a href="https://radiusonline.com">Radius Online</a> Inc.,
-                Atlanta, Georgia, U.S.A.{" "}
+                <a
+                  href="https://radiusonline.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Radius Online
+                </a>{" "}
+                Inc., Atlanta, Georgia, U.S.A.{" "}
               </div>
               <p>
-                RadiusOnline provides the perfect mix of cutting
-                edge-technology, data & analytics, search engine, directory
+                RadiusOnline provides the perfect mix of cutting-edge
+                technology, data & analytics, search engine, directory
                 visibility, & strategy to maximize their local online success.
                 At RadiusOnline, I
                 <ul>
@@ -295,9 +351,7 @@ const IndexPage = () => (
               </p>
             </div>
             <div className="resume-date text-md-right">
-              <span className="text-primary">
-                December 2013 - November 2014
-              </span>
+              <span className="text-primary">August 2013 - December 2014</span>
             </div>
           </div>
 
@@ -340,12 +394,14 @@ const IndexPage = () => (
             <div className="resume-content">
               <h3 className="mb-0">Software Developer</h3>
               <div className="subheading mb-3">
-                <a href="https://openspan.com">OpenSpan</a> Inc., Atlanta,
-                Georgia, U.S.A.
+                <a href="https://openspan.com" target="_blank" rel="noreferrer">
+                  OpenSpan
+                </a>{" "}
+                Inc., Atlanta, Georgia, U.S.A.
               </div>
               <p>
-                OpenSpan focuses on desktop automation, it has the niche market
-                in building automation for non-technial user. At OpenSpan, I
+                OpenSpan focuses on desktop automation, it has a niche market in
+                building automation for non-technical users. At OpenSpan, I
                 <ul>
                   <li>
                     Built back end code for OpenSpan Console to work with Amazon
