@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
-
-import '../assets/sass/resume.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { StaticQuery, graphql } from "gatsby";
 
 class Layout extends Component {
   render() {
     const { children } = this.props;
+    document.body.classList.remove("resume");
     return (
       <StaticQuery
         query={graphql`
@@ -19,18 +18,21 @@ class Layout extends Component {
             }
           }
         `}
-        render={data => (
+        render={(data) => (
           <>
             <Helmet
               title={data.site.siteMetadata.title}
               meta={[
-                { name: 'description', content: 'An Pham\'s up to date resume' },
-                { name: 'keywords', content: 'An Pham, Resume, anphamthanh, Software Engineer' },
+                { name: "description", content: "An Pham's up to date resume" },
+                {
+                  name: "keywords",
+                  content: "An Pham, Resume, anphamthanh, Software Engineer",
+                },
               ]}
             >
               <html lang="en" />
             </Helmet>
-            <div className={'main-body'}>{children}</div>
+            <div className={"main-body"}>{children}</div>
           </>
         )}
       />

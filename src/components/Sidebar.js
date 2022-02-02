@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import Scrollspy from 'react-scrollspy';
-import Scroll from './Scroll';
+import React, { Component } from "react";
+import Scrollspy from "react-scrollspy";
+import Scroll from "./Scroll";
 
-import avatar from '../assets/images/avatar.png';
-import config from '../../config';
+import avatar from "../assets/images/avatar.png";
+import config from "../../config";
 
 export class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tabs: [
-        { content: 'About', href: 'about' },
-        { content: 'Qualification', href: 'qualification' },
-        { content: 'Experience', href: 'experience' },
-        { content: 'Education', href: 'education' },
-        { content: 'Skills', href: 'skills' },
-        { content: 'Interests', href: 'interests' },
-        { content: 'Awards', href: 'awards' },
+        { content: "About", href: "about" },
+        { content: "Qualification", href: "qualification" },
+        { content: "Experience", href: "experience" },
+        { content: "Education", href: "education" },
+        { content: "Skills", href: "skills" },
+        { content: "Interests", href: "interests" },
+        { content: "Awards", href: "awards" },
       ],
     };
   }
@@ -53,7 +53,7 @@ export class Sidebar extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <Scrollspy
-            items={tabs.map(s => s.href)}
+            items={tabs.map((s) => s.href)}
             currentClassName="active"
             offset={-300}
             className="navbar-nav"
@@ -75,7 +75,10 @@ export class Sidebar extends Component {
         <div className="navbar-nav">
           <div className="nav-item">
             <a className="nav-link" href="/">
-              <span role="img" aria-label="books">📚</span> Blog
+              <span role="img" aria-label="books">
+                📚
+              </span>{" "}
+              Blog
             </a>
           </div>
         </div>
