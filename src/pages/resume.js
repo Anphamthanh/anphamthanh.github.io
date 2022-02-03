@@ -7,7 +7,9 @@ import config from "../../config";
 import "../assets/sass/resume.scss";
 
 const IndexPage = () => {
-  document.body.classList.add("resume");
+  if (typeof document !== `undefined`) {
+    document.body.classList.add("resume");
+  }
   return (
     <Layout>
       <Sidebar />

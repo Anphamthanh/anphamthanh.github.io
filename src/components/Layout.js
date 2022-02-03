@@ -6,7 +6,9 @@ import { StaticQuery, graphql } from "gatsby";
 class Layout extends Component {
   render() {
     const { children } = this.props;
-    document.body.classList.remove("resume");
+    if (typeof document !== `undefined`) {
+      document.body.classList.add("resume");
+    }
     return (
       <StaticQuery
         query={graphql`
