@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building LLM Agents That Cite Their Sources — An Pham</title>
+<meta name="description" content="Most LLM applications generate plausible text. For governance and compliance use cases, plausible isn't enough — you need verifiable citations back to source evidence.">
+<meta property="og:title" content="Building LLM Agents That Cite Their Sources">
+<meta property="og:description" content="Most LLM applications generate plausible text. For governance and compliance use cases, plausible isn't enough — you need verifiable citations back to source evidence.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/llm-agents-cite-sources/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>Building LLM Agents That Cite Their Sources</h1>
+      <div class="article-meta">April 12, 2026 · 8 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">LLM</span><span class="post-tag">AI Engineering</span><span class="post-tag">RAG</span>
+      </div>
+    </header>
+
+    <div class="content">
+<p>When we started building Meetless, we hit a design constraint that shaped our entire AI architecture: <strong>every claim in a Decision Diff must be traceable to a source message, document section, or ticket.</strong></p>
+<p>This isn't a nice-to-have. In governance, an uncited claim is worse than no claim at all — it creates false confidence. If a Decision Diff says "Sarah approved the scope change on March 5" and that's a hallucination, you've built your sprint plan on a lie.</p>
+<h2>The Citation Problem</h2>
+<p>Most LLM applications treat citations as an afterthought — generate the text first, then try to link it to sources. This leads to the well-known problem of "plausible but unsourced" outputs where the LLM generates reasonable-sounding claims that don't correspond to any actual evidence.</p>
+<p>For Meetless, we needed the opposite: <strong>evidence-first generation</strong>. The system should start with the source messages and documents, then compose a structured summary that refers back to them.</p>
+<h2>Our Architecture: Evidence-Grounded Generation</h2>
+<p>Here's the approach we converged on after several iterations:</p>
+<h3>Step 1: Evidence Collection</h3>
+<p>When a Decision Diff is triggered (either by a user or by the detection system), the first step is collecting all relevant evidence:</p>
+<ul>
+<li>The Slack messages in the thread or channel where the change was discussed</li>
+<li>The current state of linked Jira tickets</li>
+<li>The relevant sections of any linked PRDs or Confluence pages</li>
+<li>Prior Decision Diffs that touched the same scope</li>
+</ul>
+<p>Each piece of evidence gets a unique identifier (e.g., <code>slack:C0123:1709654400.123</code> for a specific Slack message). This identifier is the citation anchor.</p>
+<h3>Step 2: Structured Extraction</h3>
+<p>Rather than asking the LLM to "summarize what changed," we decompose the task into specific extractions:</p>
+<ul>
+<li><strong>Delta extraction</strong>: What was the previous understanding? What is the new understanding? (Each statement must reference a specific evidence ID.)</li>
+<li><strong>Attribution</strong>: Who initiated the change? Who was involved in the discussion? (Names linked to specific messages.)</li>
+<li><strong>Impact signals</strong>: What downstream artifacts are mentioned or implied as affected?</li>
+</ul>
+<p>Each extraction is a separate LLM call with a constrained output schema. This is less "creative" than a single free-form generation, but dramatically more reliable.</p>
+<h3>Step 3: Assembly with Verification</h3>
+<p>The extracted components are assembled into a Decision Diff structure. Before finalizing, a verification pass checks:</p>
+<ul>
+<li>Every factual claim has at least one citation</li>
+<li>Every citation points to a real evidence item (not a hallucinated ID)</li>
+<li>The delta is logically consistent (the "before" state matches prior records)</li>
+<li>Mentioned people actually appear in the evidence</li>
+</ul>
+<p>Claims that fail verification are flagged for human review rather than silently included.</p>
+<h2>The Technical Details That Matter</h2>
+<h3>Citation Anchoring</h3>
+<p>We use a two-level citation system:</p>
+<p><strong>Document-level citations</strong> link to the source (e.g., "Slack message from @sarah in #product-planning"). These are always shown to the user.</p>
+<p><strong>Span-level citations</strong> link to the specific text within the source that supports the claim. These are available on hover/click for users who want to verify.</p>
+<p>The span-level citations use character offsets into the original text, which means they're brittle to source edits but accurate at generation time. For Slack messages (which are rarely edited after the fact), this works well.</p>
+<h3>Handling Ambiguity</h3>
+<p>Real conversations are ambiguous. A product manager might say "we should probably cut the batch API" — is that a decision or a suggestion? Our system handles this by:</p>
+<ol>
+<li><strong>Confidence scoring</strong>: Each extracted claim gets a confidence score. "We're cutting the batch API, confirmed with stakeholders" scores high. "Maybe we should reconsider the batch API" scores low.</li>
+</ol>
+<ol>
+<li><strong>Explicit uncertainty</strong>: Low-confidence claims are included in the Decision Diff but marked as "needs clarification" rather than stated as fact.</li>
+</ol>
+<ol>
+<li><strong>Human-in-the-loop</strong>: The draft Decision Diff always goes through human review before routing for approval. The human can promote uncertain claims to facts, demote them to notes, or remove them.</li>
+</ol>
+<h3>Context Window Management</h3>
+<p>A governance system needs to process long conversation histories. A Slack thread about a scope change might span 50+ messages over several days, plus a 20-page PRD, plus 5 Jira tickets.</p>
+<p>We handle this with a staged approach:</p>
+<ol>
+<li><strong>Relevance filtering</strong>: Use embedding similarity to identify which messages and document sections are relevant to the detected change. This typically reduces the context from thousands of tokens to hundreds.</li>
+</ol>
+<ol>
+<li><strong>Chunked extraction</strong>: For long evidence items (e.g., a full PRD), extract relevant sections rather than including the entire document.</li>
+</ol>
+<ol>
+<li><strong>Multi-pass generation</strong>: For complex changes that touch multiple areas, we run separate extraction passes for each area and merge the results.</li>
+</ol>
+<h2>Lessons Learned</h2>
+<h3>What worked</h3>
+<ul>
+<li><strong>Decomposed extraction beats monolithic generation.</strong> Breaking the task into specific extractions (delta, attribution, impact) with constrained schemas produced dramatically better results than a single "analyze this change" prompt.</li>
+</ul>
+<ul>
+<li><strong>Verification as a separate pass is essential.</strong> The generation model doesn't reliably self-check. A separate verification pass catches ~15% of citation errors that would otherwise ship.</li>
+</ul>
+<ul>
+<li><strong>Users trust cited claims more.</strong> Early user testing showed that Decision Diffs with visible citations were accepted 3x faster than uncited summaries, even when the content was identical. The citations provide the confidence to approve quickly.</li>
+</ul>
+<h3>What didn't work</h3>
+<ul>
+<li><strong>Asking the LLM to generate citation IDs inline.</strong> Early versions asked the model to include citation markers like <code>[slack:123]</code> in its output. This led to frequent hallucinated IDs. The current approach generates text and citations separately, then aligns them.</li>
+</ul>
+<ul>
+<li><strong>Using RAG for evidence retrieval.</strong> Standard RAG (retrieve top-k chunks by embedding similarity) missed too many relevant messages. Conversation threads have temporal and contextual dependencies that pure similarity search doesn't capture. We switched to structured retrieval (all messages in the thread, all linked tickets) supplemented by similarity search for related context.</li>
+</ul>
+<ul>
+<li><strong>Single-model everything.</strong> We initially tried using one model for all steps. Different steps have different requirements: extraction needs precision, verification needs logical reasoning, summarization needs clarity. Using specialized prompts (and sometimes different models) for each step improved quality across the board.</li>
+</ul>
+<h2>The Broader Principle</h2>
+<p>The pattern of evidence-grounded generation isn't specific to governance. Any LLM application where accuracy matters more than creativity benefits from this architecture:</p>
+<ol>
+<li>Collect and anchor evidence first</li>
+<li>Extract structured claims with citations</li>
+<li>Verify citations before output</li>
+<li>Flag uncertainty explicitly</li>
+</ol>
+<p>It's more engineering work than a simple prompt-and-pray approach. But for applications where a hallucination has real consequences — governance, legal, medical, financial — it's the only responsible architecture.</p>
+<p><em>If you're building LLM applications that need citation fidelity, I'd enjoy comparing approaches. <a href="https://www.linkedin.com/in/an-pham-atl/">LinkedIn</a>.</em></p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>

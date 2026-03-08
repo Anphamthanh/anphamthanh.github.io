@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What 12,000 Brands Taught Me About Supply Chain AI — An Pham</title>
+<meta name="description" content="Leading AI engineering at Inspectorio, I saw firsthand how AI transforms supply chain visibility — and why the hardest problems aren't technical.">
+<meta property="og:title" content="What 12,000 Brands Taught Me About Supply Chain AI">
+<meta property="og:description" content="Leading AI engineering at Inspectorio, I saw firsthand how AI transforms supply chain visibility — and why the hardest problems aren't technical.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/supply-chain-ai-lessons/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>What 12,000 Brands Taught Me About Supply Chain AI</h1>
+      <div class="article-meta">April 26, 2026 · 7 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">AI</span><span class="post-tag">Supply Chain</span><span class="post-tag">Engineering Leadership</span>
+      </div>
+    </header>
+
+    <div class="content">
+<p>In 2024, I joined Inspectorio as Senior Director of Software & AI Engineering. Inspectorio provides supply chain management software to over 12,000 brands and suppliers globally — companies that need visibility into quality, compliance, and performance across complex, multi-tier supply chains.</p>
+<p>My mandate was to pioneer the company's AI integration across the platform. What I learned there fundamentally shaped how I think about building AI systems for enterprise.</p>
+<h2>The Scale of the Problem</h2>
+<p>Global supply chains are staggeringly complex. A single consumer product might involve:</p>
+<ul>
+<li>Raw material suppliers across 3-4 countries</li>
+<li>Manufacturing facilities with varying quality standards</li>
+<li>Logistics providers with different tracking systems</li>
+<li>Compliance requirements that vary by destination market</li>
+<li>Quality inspections at multiple stages</li>
+</ul>
+<p>Inspectorio's platform sits at the intersection of all of this, processing millions of data points from inspections, audits, shipments, and compliance checks. The question wasn't "can AI help?" — it was "where does AI help most, and where does it hurt?"</p>
+<h2>Lesson 1: The Data Is Messier Than You Think</h2>
+<p>Supply chain data comes from humans in factories, warehouses, and inspection sites. It's entered on mobile devices in varying conditions, in multiple languages, with inconsistent terminology. A "critical defect" in one factory's vocabulary might be a "major finding" in another's.</p>
+<p>Before we could build any useful AI, we spent significant effort on <strong>data normalization</strong>. Not the glamorous kind — the tedious, essential kind where you build mappings between 47 different ways factories describe the same defect category.</p>
+<p>The lesson: <strong>in enterprise AI, data quality work outweighs model work by 3:1 or more.</strong> If your AI roadmap is all about models and none about data pipelines, you're going to be disappointed.</p>
+<h2>Lesson 2: Prediction Without Action Is a Dashboard</h2>
+<p>Early AI efforts in supply chains tend to focus on prediction: predict which shipments will be late, which suppliers will have quality issues, which factories will fail audits. These predictions can be accurate and still useless.</p>
+<p>Why? Because a prediction only matters if it's connected to an action. "Factory X has a 73% chance of failing its next audit" is interesting. "Factory X has a 73% chance of failing its next audit, here are the 3 specific areas to address, and here's a pre-scheduled re-inspection" is valuable.</p>
+<p>We learned to build AI features as <strong>action-oriented systems</strong>, not insight-oriented dashboards. Every prediction needed a clear: "and therefore, the system will [do this] or [recommend this]."</p>
+<h2>Lesson 3: Trust Is the Bottleneck, Not Accuracy</h2>
+<p>We built a defect classification model that was demonstrably more accurate than manual classification. Adoption was slow. Not because the model was wrong, but because quality managers couldn't see <em>why</em> it made its decisions.</p>
+<p>The breakthrough came when we added explainability — showing which features of the inspection data drove each classification, with links back to the original inspection photos and notes. Accuracy didn't change. Adoption tripled.</p>
+<p>This directly informed how I think about the Decision Diff at Meetless. <strong>Every AI output that affects a human decision needs a citation trail.</strong> Not because the AI is wrong (though it sometimes is), but because humans won't act on outputs they can't verify.</p>
+<h2>Lesson 4: Multi-Tenant AI Is a Different Beast</h2>
+<p>When you serve 12,000+ brands, you can't train one model and call it done. Different brands have different quality standards, different risk tolerances, different compliance requirements. A defect that's critical for a luxury brand might be acceptable for a discount retailer.</p>
+<p>We developed a multi-tenant AI architecture where:</p>
+<ul>
+<li><strong>Core models</strong> captured general patterns (defect detection, anomaly identification)</li>
+<li><strong>Tenant-specific layers</strong> adapted outputs to each brand's standards</li>
+<li><strong>Feedback loops</strong> from each brand's accept/reject decisions continuously refined their specific layer</li>
+</ul>
+<p>This is expensive to build but essential for enterprise AI. A one-size-fits-all model loses the nuance that makes it valuable for any specific customer.</p>
+<h2>Lesson 5: Integration Beats Intelligence</h2>
+<p>The smartest AI model in the world is worthless if it doesn't integrate into existing workflows. Supply chain professionals live in a specific set of tools: their ERP, their quality management system, their communication channels.</p>
+<p>An AI feature that requires switching to a new interface gets ignored. An AI feature that surfaces insights inside the tool they're already using gets adopted.</p>
+<p>We invested heavily in integration — surfacing AI-driven insights directly in inspection workflows, audit reports, and supplier scorecards. The AI disappeared into the tool, which is exactly what you want.</p>
+<h2>What This Taught Me About Governance</h2>
+<p>The supply chain experience crystallized something for me: <strong>the hardest problem in enterprise software isn't building the technology — it's closing the loop between insight and action.</strong></p>
+<p>Supply chain AI generates insights about quality risks. But those insights only create value when they reach the right person, trigger the right action, and produce a verifiable outcome.</p>
+<p>Software delivery has the same structural problem. AI can detect that a scope change occurred in a Slack thread. But that detection only creates value when it's turned into an auditable artifact, routed to the right approver, and propagated into the delivery tools.</p>
+<p>The pattern is the same: <strong>detect → structure → route → verify → propagate.</strong> Whether you're governing supply chain quality or software delivery decisions, the architecture is fundamentally similar.</p>
+<h2>The U.S. Supply Chain Context</h2>
+<p>This work matters beyond individual companies. U.S. supply chain resilience is a national priority — the disruptions of 2020-2023 made that painfully clear. AI-powered visibility platforms like Inspectorio's help U.S. brands maintain quality and compliance across global supply chains, reducing risk and improving accountability.</p>
+<p>The skills and patterns from this work — multi-tenant AI, evidence-grounded outputs, integration-first design, closing the insight-to-action loop — are directly transferable to other domains where AI needs to operate at enterprise scale with auditability and trust.</p>
+<p>That's exactly what we're building at Meetless for software delivery governance.</p>
+<p><em>If you're working on AI for supply chain or enterprise governance, I'm always interested in comparing notes. <a href="https://www.linkedin.com/in/an-pham-atl/">LinkedIn</a>.</em></p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>

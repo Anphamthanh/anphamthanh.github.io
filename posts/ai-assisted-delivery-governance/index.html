@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why AI-Assisted Delivery Needs a Governance Layer — An Pham</title>
+<meta name="description" content="AI coding assistants are making teams ship faster than ever. But speed without governance just means you arrive at the wrong destination sooner.">
+<meta property="og:title" content="Why AI-Assisted Delivery Needs a Governance Layer">
+<meta property="og:description" content="AI coding assistants are making teams ship faster than ever. But speed without governance just means you arrive at the wrong destination sooner.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/ai-assisted-delivery-governance/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>Why AI-Assisted Delivery Needs a Governance Layer</h1>
+      <div class="article-meta">March 29, 2026 · 6 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">AI Governance</span><span class="post-tag">Software Delivery</span><span class="post-tag">LLM</span>
+      </div>
+    </header>
+
+    <div class="content">
+<p>GitHub Copilot. Cursor. Claude Code. Windsurf. The AI coding assistant market is exploding, and for good reason — these tools genuinely make developers faster. Early data suggests 30-55% improvements in task completion speed for common coding tasks.</p>
+<p>But here's what nobody's talking about: <strong>speed amplifies both good and bad decisions.</strong></p>
+<h2>The Acceleration Problem</h2>
+<p>When your team took two weeks to build a feature, a scope misunderstanding on day 3 meant you had 11 days to catch and correct it before shipping. The slow pace was painful, but it was also forgiving. Misalignments had time to surface in standups, code reviews, and hallway conversations.</p>
+<p>Now imagine the same team using AI-assisted development. That two-week feature ships in 4 days. A scope misunderstanding on day 1 means you ship the wrong thing on day 4 — before anyone realizes the requirements were misaligned.</p>
+<p>This isn't hypothetical. Teams adopting AI coding tools are already reporting a new failure mode: <strong>faster delivery of the wrong thing.</strong></p>
+<h2>What Governance Means (And Doesn't Mean)</h2>
+<p>When I say "governance," I don't mean bureaucracy. I don't mean CAB meetings, change advisory boards, or six-signature approval chains. Those exist for good reasons in regulated environments, but they're not what most software teams need.</p>
+<p>What I mean is a thin, fast, mostly automated layer that ensures:</p>
+<ol>
+<li><strong>Decisions are explicit.</strong> When a scope change happens, it produces an artifact — not a Slack message that scrolls off-screen.</li>
+</ol>
+<ol>
+<li><strong>Impact is analyzed.</strong> When requirements change, the system surfaces what's affected: which tickets, which tests, which deployment plans.</li>
+</ol>
+<ol>
+<li><strong>Approval is routed.</strong> The right people sign off on changes before downstream work proceeds.</li>
+</ol>
+<ol>
+<li><strong>Propagation is automatic.</strong> Once approved, the change flows back into Jira, Slack, and wherever else work is tracked.</li>
+</ol>
+<p>The goal is governance at the speed of AI-assisted delivery. Not governance that slows delivery down to pre-AI speeds.</p>
+<h2>The Missing Layer in the Stack</h2>
+<p>Consider the modern software delivery stack:</p>
+<ul>
+<li><strong>Ideation</strong>: Notion, Confluence, Google Docs</li>
+<li><strong>Planning</strong>: Jira, Linear, Shortcut</li>
+<li><strong>Communication</strong>: Slack, Teams, Discord</li>
+<li><strong>Coding</strong>: VS Code + Copilot/Cursor/Claude</li>
+<li><strong>Review</strong>: GitHub PRs, CI/CD</li>
+<li><strong>Deployment</strong>: Kubernetes, Cloud Run, Vercel</li>
+</ul>
+<p>Notice what's missing? There's no layer between <strong>communication</strong> and <strong>planning</strong> that validates whether a decision was actually made, who made it, and whether it was propagated correctly.</p>
+<p>The code review layer (PRs + CI) ensures code quality. But there's no equivalent layer for <em>decision quality</em>. You can change the entire scope of a sprint with a Slack message and nothing checks whether that change was understood, approved, or propagated.</p>
+<h2>Why LLMs Are the Enabling Technology</h2>
+<p>Building a governance layer for decisions requires understanding natural language in context. A system needs to:</p>
+<ul>
+<li>Read a Slack thread and distinguish a scope change from casual discussion</li>
+<li>Extract the delta: what was the previous understanding vs. the new one</li>
+<li>Cross-reference against existing PRDs, tickets, and prior decisions</li>
+<li>Draft a structured summary that a human can review in seconds</li>
+</ul>
+<p>This was impossible at reasonable cost before LLMs. You'd need either human analysts (expensive, slow, doesn't scale) or rigid structured inputs (nobody fills out forms in Slack).</p>
+<p>LLMs make it possible to have <strong>lightweight governance with rich context</strong>. The AI reads the messy, unstructured human communication and produces the structured artifact. Humans just review and approve.</p>
+<h2>The National Importance Angle</h2>
+<p>This isn't just a startup problem. The U.S. spends approximately <strong>$1.7 trillion annually on software development and IT services</strong>. Industry research consistently shows that 20-30% of that spending goes to rework — work that was done correctly against incorrect requirements.</p>
+<p>That's $340-510 billion in annual waste from decision-communication failures.</p>
+<p>As AI coding tools accelerate delivery speed, this waste will grow unless governance keeps pace. A team that ships 2x faster with AI but has the same decision-communication failures doesn't save 50% — they waste resources 2x faster.</p>
+<p>The companies and countries that solve decision governance will have a structural advantage in software delivery productivity. This is infrastructure, not a nice-to-have.</p>
+<h2>What We're Building</h2>
+<p>At Meetless, the core primitive is the <strong>Decision Diff</strong> — an auditable artifact for scope changes. But the bigger vision is a governance layer that:</p>
+<ul>
+<li>Integrates with the tools teams already use (Slack, Jira, GitHub, Confluence)</li>
+<li>Uses AI to detect and draft decision artifacts with minimal human effort</li>
+<li>Provides configurable approval workflows (from lightweight async to strict gated)</li>
+<li>Produces audit trails that satisfy compliance requirements</li>
+<li>Measures decision velocity and rework metrics to prove ROI</li>
+</ul>
+<p>The first version focuses on Slack → Decision Diff → Jira propagation. That's the highest-value, lowest-friction entry point for most teams.</p>
+<p>If you're thinking about how AI is changing your team's delivery process — not just the coding part, but the decision-making around it — I'd like to compare notes. <a href="https://www.linkedin.com/in/an-pham-atl/">LinkedIn</a>.</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>

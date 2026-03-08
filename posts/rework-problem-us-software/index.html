@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The $1.7T Rework Problem in U.S. Software Delivery — An Pham</title>
+<meta name="description" content="The U.S. spends $1.7 trillion annually on software and IT. Up to 30% of that is rework from scope miscommunication. Here's why this is a governance problem, not a process problem.">
+<meta property="og:title" content="The $1.7T Rework Problem in U.S. Software Delivery">
+<meta property="og:description" content="The U.S. spends $1.7 trillion annually on software and IT. Up to 30% of that is rework from scope miscommunication. Here's why this is a governance problem, not a process problem.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/rework-problem-us-software/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>The $1.7T Rework Problem in U.S. Software Delivery</h1>
+      <div class="article-meta">May 10, 2026 · 6 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">Software Delivery</span><span class="post-tag">Governance</span><span class="post-tag">Economics</span>
+      </div>
+    </header>
+
+    <div class="content">
+<p>Let me frame the problem with numbers.</p>
+<p>The U.S. software development and IT services market generates approximately <strong>$1.7 trillion in annual spending</strong>. This includes internal engineering teams, outsourced development, consulting, and SaaS delivery.</p>
+<p>Industry research from the Standish Group, McKinsey, and the Project Management Institute consistently finds that <strong>20-30% of software project costs are attributable to rework</strong> — work that was completed correctly against incorrect or outdated requirements.</p>
+<p>That's <strong>$340-510 billion in annual waste</strong>. Not from bugs. Not from bad engineers. From building the right thing to the wrong spec because a decision changed and nobody told the right people.</p>
+<h2>Why "Communicate Better" Doesn't Work</h2>
+<p>Every retrospective where scope creep is identified ends with the same action item: "we need to communicate better." This has been the conclusion of software retrospectives for 30 years, and it has never worked. Here's why:</p>
+<p><strong>Communication isn't the problem. Infrastructure is.</strong></p>
+<p>Consider a parallel: before version control, teams had "communication problems" about which version of the code was current. The solution wasn't better communication — it was Git. A system that made code state explicit, diffable, and auditable.</p>
+<p>Product decisions today are in the pre-Git era. The "current state" of what a team has agreed to build lives in a combination of:</p>
+<ul>
+<li>A PRD that may or may not be up to date</li>
+<li>Jira tickets that may or may not reflect the latest scope</li>
+<li>Slack threads that scroll off-screen</li>
+<li>Meeting notes that 60% of the team didn't read</li>
+<li>Tribal knowledge in the heads of senior team members</li>
+</ul>
+<p>When a scope change happens, it modifies this distributed, informal, unversioned state. There's no diff. There's no review. There's no CI check. The change just... propagates (or doesn't) through human channels.</p>
+<h2>The Rework Taxonomy</h2>
+<p>Not all rework is created equal. Through my experience leading engineering teams at scale, I've identified three categories:</p>
+<h3>1. Specification Rework (40-50% of total)</h3>
+<p>The requirements changed but the team didn't know. This is the scope drift problem — someone decides to cut a feature, modify a workflow, or change a priority, and the engineers building it find out after they've already committed work.</p>
+<p><strong>Cost</strong>: High. Often means throwing away completed work and starting over with new requirements.</p>
+<p><strong>Preventable?</strong> Yes — with a system that detects and propagates scope changes to affected teams before they finish building the wrong thing.</p>
+<h3>2. Interpretation Rework (30-40% of total)</h3>
+<p>The requirements didn't change, but different people interpreted them differently. The PM wrote "support batch operations" and the engineer built a synchronous batch endpoint when the PM meant async. Both read the same spec. Both thought they understood.</p>
+<p><strong>Cost</strong>: Medium. Usually requires modifications rather than full rebuilds, but accumulates across dozens of ambiguous specs per sprint.</p>
+<p><strong>Preventable?</strong> Partially — with a system that surfaces ambiguities before implementation and requires explicit clarification.</p>
+<h3>3. Discovery Rework (10-20% of total)</h3>
+<p>The team built what was specified, but testing or user feedback revealed the spec was wrong. This is the healthy kind of rework — learning through building. Agile is designed for this.</p>
+<p><strong>Cost</strong>: Expected and budgeted. This is the rework you want.</p>
+<p><strong>Preventable?</strong> No, and you shouldn't try. This is how good products are built.</p>
+<p>The first two categories — specification rework and interpretation rework — account for <strong>70-90% of waste</strong> and are both addressable with better decision infrastructure.</p>
+<h2>Why This Is Getting Worse</h2>
+<p>Three trends are compounding the rework problem:</p>
+<h3>AI-Accelerated Development</h3>
+<p>When developers ship 2x faster with AI coding assistants, the feedback loop between "decision made" and "code shipped" shrinks. There's less time for misalignments to surface organically. A scope change that would have been caught in a code review on day 5 now ships to staging on day 2.</p>
+<h3>Remote and Async Work</h3>
+<p>The informal governance mechanisms of co-located teams — overhearing a relevant conversation, catching a misunderstanding at the whiteboard, asking a quick clarifying question across the desk — are gone. In distributed teams, if a decision isn't captured in a system, it effectively didn't happen.</p>
+<h3>Increasing System Complexity</h3>
+<p>Modern software systems are more interconnected than ever. A scope change in one service cascades to dependent services, API contracts, test suites, deployment configurations, and documentation. The blast radius of a poorly communicated change grows with system complexity.</p>
+<h2>The Governance Solution</h2>
+<p>What the industry needs isn't another project management tool or another communication platform. It's a <strong>governance layer</strong> — a thin, fast, mostly automated system that:</p>
+<ol>
+<li><strong>Detects</strong> when a meaningful scope change occurs in natural communication channels</li>
+<li><strong>Structures</strong> the change into an auditable artifact with evidence and citations</li>
+<li><strong>Analyzes</strong> the downstream impact on affected artifacts and teams</li>
+<li><strong>Routes</strong> the change to the right decision-makers for explicit approval</li>
+<li><strong>Propagates</strong> the approved change back into delivery tools automatically</li>
+<li><strong>Measures</strong> decision velocity and rework reduction to prove ROI</li>
+</ol>
+<p>This is what we're building at Meetless. The Decision Diff is the core primitive — a structured, cited, auditable artifact for every meaningful scope change.</p>
+<h2>The Economic Case</h2>
+<p>If a governance layer can reduce specification and interpretation rework by even 30%, the impact at the industry level is:</p>
+<ul>
+<li>70-90% of $340-510B in annual waste = $238-459B addressable</li>
+<li>30% reduction = <strong>$71-138 billion in annual savings</strong> for U.S. software delivery</li>
+</ul>
+<p>At the company level, a 100-person engineering team averaging $200K total cost per engineer spends $20M/year on engineering. If 25% is rework and governance reduces that by 30%, that's <strong>$1.5M/year saved</strong> — in a single team.</p>
+<p>The ROI on governance infrastructure isn't measured in developer satisfaction surveys. It's measured in recovered engineering capacity and faster time-to-market.</p>
+<h2>What Comes Next</h2>
+<p>In upcoming posts, I'll share results from our first pilot deployments — real metrics on decision cycle time, rework reduction, and team adoption. The early data is promising.</p>
+<p>The $1.7T rework problem isn't going to be solved by telling teams to communicate better. It's going to be solved by building the infrastructure that makes good decision-making the default, not the exception.</p>
+<p><em>If you want to see the data from our pilots, follow along here or connect on <a href="https://www.linkedin.com/in/an-pham-atl/">LinkedIn</a>.</em></p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>
