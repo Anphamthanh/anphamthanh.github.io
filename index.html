@@ -4,216 +4,86 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>An Pham — AI Engineer, Software Architect, Founder</title>
-<meta name="description" content="An Pham is a senior engineering leader and AI founder building governance infrastructure for AI-assisted software delivery.">
-<meta property="og:title" content="An Pham — AI Engineer, Software Architect, Founder">
-<meta property="og:description" content="Building governance infrastructure for AI-assisted software delivery. Founder of Meetless.">
+<meta name="description" content="Writings on AI governance, software delivery, and building products that reduce rework in engineering teams.">
+<meta property="og:title" content="An Pham — Blog">
+<meta property="og:description" content="Writings on AI governance, software delivery, and building products that reduce rework in engineering teams.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anpham.dev">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
-<style>
-  :root {
-    --bg: #fafafa; --text: #1a1a1a; --muted: #666; --accent: #0055d4;
-    --surface: #fff; --border: #e5e5e5; --green: #16803c; --blue: #0055d4;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0d1117; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
-      --surface: #161b22; --border: #30363d; --green: #3fb950; --blue: #58a6ff;
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
-
-  /* Hero */
-  .hero { margin-bottom: 48px; }
-  .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
-  .hero .subtitle { font-size: 18px; color: var(--muted); margin-bottom: 16px; }
-  .hero .thesis { font-size: 15px; color: var(--text); line-height: 1.7; border-left: 3px solid var(--accent); padding-left: 16px; margin-top: 16px; }
-  .links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 14px; }
-
-  /* Sections */
-  section { margin-bottom: 48px; }
-  section h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 20px; font-weight: 600; }
-
-  /* Cards */
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 12px; }
-  .card h3 { font-size: 16px; margin-bottom: 4px; }
-  .card .meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
-  .card p { font-size: 14px; color: var(--muted); }
-
-  /* Awards */
-  .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .award { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
-  .award .name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .award .org { font-size: 12px; color: var(--muted); }
-
-  /* Education */
-  .edu { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-  .edu:last-child { border-bottom: none; }
-  .edu .school { color: var(--muted); font-size: 13px; }
-
-  /* Skills */
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 4px 12px; font-size: 13px; }
-
-  /* Meetless section */
-  .meetless-card { background: var(--surface); border: 2px solid var(--accent); border-radius: 8px; padding: 24px; }
-  .meetless-card h3 { font-size: 20px; margin-bottom: 8px; }
-  .meetless-card .status { display: inline-block; background: rgba(22,128,60,0.1); color: var(--green); padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
-  .meetless-card ul { padding-left: 20px; font-size: 14px; color: var(--muted); }
-  .meetless-card li { margin-bottom: 6px; }
-
-  /* Avatar */
-  .avatar { width: 96px; height: 96px; border-radius: 50%; border: 2px solid var(--border); margin-bottom: 16px; }
-
-  /* Footer */
-  footer { border-top: 1px solid var(--border); padding-top: 24px; font-size: 13px; color: var(--muted); text-align: center; }
-
-  @media (max-width: 600px) {
-    .awards-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 28px; }
-    .container { padding: 40px 16px; }
-  }
-</style>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/" class="active">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
+  <div class="blog-header">
+    <h1>Blog</h1>
+    <p>Writings on AI governance, software delivery, and the future of engineering decision-making.</p>
+  </div>
 
-  <header class="hero">
-    <img src="https://avatars.githubusercontent.com/u/2342885?v=4" alt="An Pham" class="avatar">
-    <h1>An Pham</h1>
-    <div class="subtitle">AI/ML Engineer · Software Architect · Engineering Leader · Founder</div>
-    <div class="links">
-      <a href="mailto:anpham.dev@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/anphamthanh" target="_blank">LinkedIn</a>
-      <a href="https://github.com/Anphamthanh" target="_blank">GitHub</a>
-    </div>
-    <div class="thesis">
-      I build governance infrastructure for AI-assisted software delivery. My work focuses on reducing decision latency, scope drift, and costly rework in U.S. knowledge-work teams through auditable decision systems.
-    </div>
-  </header>
-
-  <section>
-    <h2>Current Focus</h2>
-    <div class="meetless-card">
-      <h3>Meetless</h3>
-      <div class="status">Active — MVP shipped, first teams onboarded</div>
-      <p style="font-size:14px;margin-bottom:12px">
-        A governance layer for AI-assisted software delivery that detects, validates, and enforces product/engineering decisions across collaboration tools (Slack, Jira, GitHub). The core innovation is the <strong>Decision Diff</strong> — an auditable artifact that captures every meaningful scope change with evidence-backed citations, required approvals, and automatic propagation.
-      </p>
-      <ul>
-        <li>Reduces decision cycle time and scope drift in software teams</li>
-        <li>Provides immutable audit trails for compliance and accountability</li>
-        <li>Architecture: NestJS control plane, FastAPI AI service, real-time SSE, Slack/Jira integrations</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <h2>Recognition</h2>
-    <div class="awards-grid">
-      <div class="award">
-        <div class="name">3rd Prize — Vietnam AI Stars</div>
-        <div class="org">Silicon Valley · 2025</div>
+  <ul class="post-list">
+    <li class="post-item">
+      <div class="post-date">March 8, 2026</div>
+      <h2><a href="/posts/why-scope-changes-kill-sprints/">Why Scope Changes Kill Sprints — and What We're Building to Fix It</a></h2>
+      <p class="post-excerpt">Every engineering team has felt it: a "small tweak" from product that cascades into missed deadlines, rework, and finger-pointing. The problem isn't the change itself — it's that changes travel through informal channels with no audit trail, no impact analysis, and no accountability.</p>
+      <div class="post-tags">
+        <span class="post-tag">AI Governance</span>
+        <span class="post-tag">Software Delivery</span>
+        <span class="post-tag">Meetless</span>
       </div>
-      <div class="award">
-        <div class="name">$10,000 Equity-Free Grant</div>
-        <div class="org">Mookerji Innovation Fund · KSU</div>
-      </div>
-      <div class="award">
-        <div class="name">Judge's Choice Award</div>
-        <div class="org">GSA Shark Tank · KSU</div>
-      </div>
-      <div class="award">
-        <div class="name">Best Interdisciplinary Project</div>
-        <div class="org">GSA Shark Tank · KSU</div>
-      </div>
-      <div class="award">
-        <div class="name">C-Day Champion — 3rd Place</div>
-        <div class="org">KSU CCSE · Graduate Project</div>
-      </div>
-      <div class="award">
-        <div class="name">CREATE-X Launch Program</div>
-        <div class="org">Georgia Institute of Technology</div>
-      </div>
-    </div>
-  </section>
+    </li>
 
-  <section>
-    <h2>Experience</h2>
-    <div class="card">
-      <h3>Senior Director of Software & AI Engineering</h3>
-      <div class="meta">Inspectorio · 2024–2025</div>
-      <p>Pioneered AI-powered supply chain management platform transforming global visibility, resilience, and performance for 12,000+ brands and suppliers.</p>
-    </div>
-    <div class="card">
-      <h3>CEO & Founder</h3>
-      <div class="meta">DayCon.ai / SmartParent.ai · 2023–2024</div>
-      <p>Built AI parenting platform with LLM backends using Modular RAGs and a network of LLM agents.</p>
-    </div>
-    <div class="card">
-      <h3>Vice President of Technology</h3>
-      <div class="meta">Hello Health Group · 2023</div>
-      <p>Led engineering for the leading healthcare platform across 9 countries in Asia. Implemented AI chatbot, expert system, and CDP.</p>
-    </div>
-    <div class="card">
-      <h3>Director of Engineering</h3>
-      <div class="meta">TIKI Corp · 2019–2022</div>
-      <p>Led core platform, payments, social network, and digital marketplace for Vietnam's largest e-commerce platform.</p>
-    </div>
-    <div class="card">
-      <h3>Engineering Leader</h3>
-      <div class="meta">TrustingSocial · 2018–2019</div>
-      <p>Re-architected digital lending platform for major banks. Credit scoring innovation for the unbanked.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Education</h2>
-    <div class="edu">
-      <div><strong>MS in AI</strong> <span class="school">— Kennesaw State University (in progress)</span></div>
-    </div>
-    <div class="edu">
-      <div><strong>MS in AI & Machine Learning</strong> <span class="school">— Georgia Institute of Technology</span></div>
-    </div>
-    <div class="edu">
-      <div><strong>Executive MBA</strong> <span class="school">— Quantic School of Business and Technology</span></div>
-    </div>
-    <div class="edu">
-      <div><strong>BS in Computer Science</strong> <span class="school">— Georgia Institute of Technology · Highest Honors</span></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Technical Expertise</h2>
-    <div class="tags">
-      <span class="tag">AI/ML Systems</span>
-      <span class="tag">LLM Agents</span>
-      <span class="tag">System Design</span>
-      <span class="tag">Distributed Systems</span>
-      <span class="tag">TypeScript</span>
-      <span class="tag">Python</span>
-      <span class="tag">Go</span>
-      <span class="tag">Rust</span>
-      <span class="tag">NestJS</span>
-      <span class="tag">React</span>
-      <span class="tag">PostgreSQL</span>
-      <span class="tag">Kafka</span>
-      <span class="tag">Redis</span>
-      <span class="tag">Kubernetes</span>
-      <span class="tag">LangChain</span>
-      <span class="tag">LangGraph</span>
-    </div>
-  </section>
-
-  <footer>
-    <p>An Pham · Atlanta, GA · <a href="mailto:anpham.dev@gmail.com">anpham.dev@gmail.com</a> · +1 (404) 644 0989</p>
-  </footer>
-
+    <li class="post-item">
+      <div class="post-date">March 8, 2026</div>
+      <h2><a href="/posts/decision-diff-primitive/">The Decision Diff: A New Primitive for Software Governance</a></h2>
+      <p class="post-excerpt">What if every meaningful scope change in your software project produced an auditable artifact — with citations, required approvals, impact analysis, and automatic propagation? That's the Decision Diff.</p>
+      <div class="post-tags">
+        <span class="post-tag">Decision Diff</span>
+        <span class="post-tag">Product Engineering</span>
+        <span class="post-tag">Governance</span>
+      </div>
+    </li>
+  </ul>
 </div>
+
+<footer>
+  <div class="container">
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </div>
+</footer>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
 </body>
 </html>

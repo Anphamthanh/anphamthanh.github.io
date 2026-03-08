@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Scope Changes Kill Sprints — An Pham</title>
+<meta name="description" content="Every engineering team has felt it: a small tweak that cascades into missed deadlines and rework. The problem isn't the change — it's the infrastructure around it.">
+<meta property="og:title" content="Why Scope Changes Kill Sprints — and What We're Building to Fix It">
+<meta property="og:description" content="Every engineering team has felt it: a small tweak that cascades into missed deadlines and rework.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/why-scope-changes-kill-sprints/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>Why Scope Changes Kill Sprints — and What We're Building to Fix It</h1>
+      <div class="article-meta">March 8, 2026 · 5 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">AI Governance</span>
+        <span class="post-tag">Software Delivery</span>
+        <span class="post-tag">Meetless</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <p>Every engineering team has felt it: a "small tweak" from product that cascades into missed deadlines, rework, and finger-pointing. The problem isn't the change itself — it's that changes travel through informal channels with no audit trail, no impact analysis, and no accountability.</p>
+
+      <h2>The Hidden Cost of Informal Decisions</h2>
+
+      <p>In most software organizations, scope changes happen in three places: Slack threads, meetings, and hallway conversations. None of these produce artifacts. None trigger impact analysis. None route to the right decision-makers for sign-off.</p>
+
+      <p>The result? A study by the Standish Group found that <strong>52% of software projects experience scope creep</strong>, and scope changes are the #1 predictor of budget and timeline overruns. But the data understates the problem — it only counts changes that are <em>acknowledged</em>. The silent ones, the ones that slip through a Slack DM or a "quick clarification" in standup, are invisible.</p>
+
+      <h2>Why Existing Tools Don't Solve This</h2>
+
+      <p>Jira tracks tickets, not decisions. Confluence stores documents, not diffs between what was agreed and what changed. Slack is a firehose of context with no governance layer. These tools were built for execution, not for change control.</p>
+
+      <p>What's missing is a system that:</p>
+
+      <ul>
+        <li>Detects when a meaningful scope change has occurred (not every Slack message — just the ones that change commitments)</li>
+        <li>Produces an auditable artifact with evidence: what changed, why, who said it, what's affected</li>
+        <li>Routes the decision to the right owners for explicit sign-off</li>
+        <li>Propagates the approved change back into the tools where work happens</li>
+      </ul>
+
+      <h2>The Cost in Numbers</h2>
+
+      <p>From my experience leading engineering teams at scale — TIKI (Vietnam's largest e-commerce platform), Hello Health Group (9 countries), and Inspectorio (12,000+ brands) — I've seen the same pattern repeatedly:</p>
+
+      <ul>
+        <li><strong>20-30% of sprint capacity</strong> is consumed by rework from poorly communicated changes</li>
+        <li><strong>Decision latency averages 3-5 days</strong> for non-trivial scope changes (the time between "someone mentions it" and "someone with authority approves it")</li>
+        <li><strong>Zero audit trail</strong> for most mid-sprint decisions, making retrospectives useless and accountability impossible</li>
+      </ul>
+
+      <h2>What We're Building</h2>
+
+      <p>At <strong>Meetless</strong>, we're building a governance layer for AI-assisted software delivery. The core innovation is what we call the <strong>Decision Diff</strong> — an auditable artifact that captures every meaningful scope change with:</p>
+
+      <ul>
+        <li>Evidence-backed citations (links to the Slack messages, PRD sections, or ticket comments where the change originated)</li>
+        <li>Required approvals (routed to the right owners based on configurable rules)</li>
+        <li>Impact checklist (affected tickets, tests, rollout notes, edge cases)</li>
+        <li>Automatic propagation (once approved, the change flows back into Jira and Slack)</li>
+      </ul>
+
+      <p>The goal is simple: make scope changes explicit, auditable, and fast to approve. Not to prevent change — change is healthy — but to make it <em>visible</em> and <em>accountable</em>.</p>
+
+      <h2>Why Now?</h2>
+
+      <p>Two trends make this urgent:</p>
+
+      <ol>
+        <li><strong>AI-generated code is accelerating delivery speed</strong>, which means scope changes have less buffer time before they cause rework. When your team ships in days instead of weeks, a silent scope change on Tuesday means wasted work by Thursday.</li>
+        <li><strong>Remote and async work has eliminated the informal governance</strong> that used to happen in hallways and war rooms. In distributed teams, if it's not in a system, it didn't happen.</li>
+      </ol>
+
+      <p>The companies that figure out change governance will ship faster and more predictably than those that don't. That's the bet we're making.</p>
+
+      <p><em>If your team struggles with scope drift, I'd love to hear about it. Reach out on <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a>.</em></p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>

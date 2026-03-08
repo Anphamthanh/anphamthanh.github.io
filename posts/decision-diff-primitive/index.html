@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Decision Diff: A New Primitive for Software Governance — An Pham</title>
+<meta name="description" content="What if every meaningful scope change produced an auditable artifact with citations, approvals, and automatic propagation? That's the Decision Diff.">
+<meta property="og:title" content="The Decision Diff: A New Primitive for Software Governance">
+<meta property="og:description" content="What if every meaningful scope change produced an auditable artifact with citations, approvals, and automatic propagation?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/decision-diff-primitive/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>The Decision Diff: A New Primitive for Software Governance</h1>
+      <div class="article-meta">March 8, 2026 · 6 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">Decision Diff</span>
+        <span class="post-tag">Product Engineering</span>
+        <span class="post-tag">Governance</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <p>Software engineering has mature primitives for code changes: pull requests, diffs, code review, CI gates. But for <em>product decisions</em> — the scope changes, requirement shifts, and priority pivots that drive engineering work — we have nothing comparable. Decisions flow through Slack, get buried in meeting notes, and live as tribal knowledge.</p>
+
+      <blockquote>What if every meaningful scope change in your software project produced an auditable artifact — with citations, required approvals, impact analysis, and automatic propagation?</blockquote>
+
+      <p>That's the <strong>Decision Diff</strong>.</p>
+
+      <h2>The Analogy: Pull Requests for Product Decisions</h2>
+
+      <p>A pull request works because it makes code changes:</p>
+
+      <ul>
+        <li><strong>Explicit</strong> — you can see exactly what changed</li>
+        <li><strong>Reviewable</strong> — the right people must approve before merge</li>
+        <li><strong>Auditable</strong> — there's a permanent record of who approved what and when</li>
+        <li><strong>Gated</strong> — CI checks prevent broken changes from shipping</li>
+      </ul>
+
+      <p>A Decision Diff applies the same principles to product decisions. When someone says "let's cut feature X from this sprint" or "actually, the API needs to support batch operations too," that change should produce a structured artifact — not just a Slack message that scrolls off-screen.</p>
+
+      <h2>Anatomy of a Decision Diff</h2>
+
+      <p>Every Decision Diff contains four components:</p>
+
+      <h3>1. Evidence-Grounded Diff</h3>
+      <p>The actual change, expressed as a before/after comparison, with citations to the source material. Not "we're changing the scope" but "Message from @sarah in #product-planning on March 5 changes the user story from X to Y, contradicting PRD section 3.2." Every claim is linked to evidence.</p>
+
+      <h3>2. Required Sign-offs</h3>
+      <p>Based on configurable ownership rules, the system determines who needs to approve this change. A scope reduction might need PM sign-off. A technical architecture change might need the tech lead. A timeline shift might need the engineering director. The rules are explicit and enforceable.</p>
+
+      <h3>3. Impact Checklist</h3>
+      <p>What downstream work is affected? Which Jira tickets need updating? Are there test plans that need revision? Rollout notes? Edge cases introduced? The Decision Diff surfaces these automatically based on the linked artifacts.</p>
+
+      <h3>4. Immutable Audit Trail</h3>
+      <p>Once created, a Decision Diff is permanent. You can see who created it, who approved it, who rejected it, and what evidence they cited. In regulated industries, this alone is worth the investment. But even in startups, having a clear record of "why did we cut that feature?" saves hours of retrospective archaeology.</p>
+
+      <h2>How It Works in Practice</h2>
+
+      <p>The workflow is designed to add minimal friction:</p>
+
+      <ol>
+        <li><strong>Detection</strong>: An AI layer monitors collaboration tools (Slack, Jira, Confluence) for messages that represent meaningful scope changes — not every message, just the ones that modify commitments, timelines, or requirements.</li>
+        <li><strong>Drafting</strong>: The system generates a draft Decision Diff with evidence citations, affected artifacts, and suggested approvers. A human reviews and refines before submission.</li>
+        <li><strong>Approval</strong>: The diff is routed to required approvers via Slack DM with one-click approve/reject buttons. Target: 60-second approval for straightforward changes.</li>
+        <li><strong>Propagation</strong>: On approval, the system automatically updates downstream artifacts — Jira ticket comments, Slack thread cards — with the approved change and who signed off.</li>
+      </ol>
+
+      <h2>Why AI Makes This Possible Now</h2>
+
+      <p>This workflow would have been impractical five years ago. Manual change control processes exist (ITIL, CAB meetings), but they're so heavy that teams skip them for anything below "major release." The result: governance only applies to the changes big enough to have a formal process, while the death-by-a-thousand-cuts changes slip through.</p>
+
+      <p>Large language models change this equation. An LLM can:</p>
+
+      <ul>
+        <li>Read a Slack thread and determine whether a meaningful scope change occurred (not just noise)</li>
+        <li>Extract the before/after delta and link it to source evidence</li>
+        <li>Cross-reference against existing PRDs and tickets to generate an impact checklist</li>
+        <li>Draft a human-readable summary that doesn't require 10 minutes to parse</li>
+      </ul>
+
+      <p>The AI doesn't make the decision. It makes the <em>decision visible</em>. Humans still approve or reject. But the cost of creating the artifact drops from 30 minutes of manual work to 30 seconds of AI-assisted drafting plus human review.</p>
+
+      <h2>The Bigger Picture</h2>
+
+      <p>As AI coding assistants accelerate the speed of software delivery, the bottleneck is shifting from "how fast can we write code" to "how fast can we make good decisions about what to build." Teams using Copilot, Cursor, and Claude Code can ship features in days instead of weeks. But if the scope is wrong — if a silent change in a Slack thread invalidated the requirements — that speed just means you arrive at the wrong destination faster.</p>
+
+      <p>The Decision Diff is our bet that the next wave of developer tooling isn't about writing code faster. It's about making the decisions that drive code better, faster, and more accountable.</p>
+
+      <p>We're building this at <strong>Meetless</strong>. If you're interested in the problem or want to try the early product, connect with me on <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a>.</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>
