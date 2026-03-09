@@ -145,7 +145,7 @@ cat > "$POST_DIR/index.html" << POSTEOF
 <meta property="og:description" content="$EXCERPT">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://anpham.dev/posts/$SLUG/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+<link rel="icon" type="image/jpeg" href="/favicon.jpg">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
