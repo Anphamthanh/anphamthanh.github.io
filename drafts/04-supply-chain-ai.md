@@ -7,7 +7,7 @@ tags: AI, Supply Chain, Engineering Leadership
 read_time: 7 min read
 ---
 
-In 2024, I joined Inspectorio as Senior Director of Software & AI Engineering. Inspectorio provides supply chain management software to over 12,000 brands and suppliers globally — companies that need visibility into quality, compliance, and performance across complex, multi-tier supply chains.
+In 2024, I joined Inspectorio as Senior Director of Software Engineering. Inspectorio provides supply chain management software to over 12,000 brands and suppliers globally — companies that need visibility into quality, compliance, and performance across complex, multi-tier supply chains.
 
 My mandate was to pioneer the company's AI integration across the platform. What I learned there fundamentally shaped how I think about building AI systems for enterprise.
 
