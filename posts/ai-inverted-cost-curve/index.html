@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Inverted the Cost Curve for Software Delivery — An Pham</title>
+<meta name="description" content="Code bugs used to be expensive and wrong decisions were cheap. AI flipped that. Now the expensive failure mode is building the right thing wrong because the spec changed and nobody noticed.">
+<meta property="og:title" content="AI Inverted the Cost Curve for Software Delivery">
+<meta property="og:description" content="Code bugs used to be expensive and wrong decisions were cheap. AI flipped that. Now the expensive failure mode is building the right thing wrong because the spec changed and nobody noticed.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/ai-inverted-cost-curve/">
+<link rel="icon" type="image/jpeg" href="/favicon.jpg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>AI Inverted the Cost Curve for Software Delivery</h1>
+      <div class="article-meta">March 16, 2026 · 4 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">AI</span><span class="post-tag">Software Delivery</span><span class="post-tag">Change Management</span>
+      </div>
+    </header>
+
+    <div class="content">
+<p>For most of software history, the expensive failure mode was bugs. Wrong code. Logic errors. Off-by-one mistakes. The entire discipline of software engineering evolved around reducing defect rates: code review, unit tests, CI/CD, linting, type systems. All of it aimed at one thing: catching bugs before they ship.</p>
+<p>AI flipped that.</p>
+<p>Copilot, Cursor, Claude Code, and their cousins are making code generation so cheap and so fast that bugs are becoming commoditized failures. An AI agent can write code, run the tests, see the failure, fix it, and re-run in under a minute. The cost of a code bug is approaching the cost of a typo.</p>
+<p>But something else got more expensive. A lot more expensive.</p>
+<h2>The New Expensive Failure</h2>
+<p>When your team can produce code 3x faster, the blast radius of a wrong decision multiplies by 3x.</p>
+<p>A PM changes scope in a Slack thread on Tuesday. Three engineers are mid-build. None of them see the message. By Thursday, you have 2,000 lines of confidently written, thoroughly tested, beautifully structured code that solves the wrong problem.</p>
+<p>Before AI, those would have been 600 lines written over a week. You might have caught the misalignment in standup on Wednesday. The rework would have been 2 days.</p>
+<p>With AI-assisted development, those 2,000 lines were written in 2 days. The rework is now a week. And the code is so well-structured that it takes longer to understand what to change than it took to write it.</p>
+<p>The cost curve inverted. Bugs got cheap. Wrong decisions got expensive.</p>
+<h2>Why Nobody Noticed</h2>
+<p>Most engineering organizations are still optimizing for the old cost curve.</p>
+<p>Code review processes. Test coverage targets. CI pipelines that catch every linting violation. These are all bug-reduction infrastructure. They're not wrong. They're just not where the expensive failures live anymore.</p>
+<p>The expensive failures now live upstream of the code. In the gap between "the PM decided something" and "every engineer building against that decision knows about it." In the Slack thread at 4pm that three people saw and five people needed to. In the Jira ticket description that was edited after three engineers already read the original.</p>
+<p>Your CI pipeline catches a missing semicolon in 30 seconds. It has zero visibility into whether the code being tested matches the current spec.</p>
+<h2>The Problem Shifted</h2>
+<p>Here's the shift in one sentence: <strong>the problem is no longer with the bugs, but with the directions.</strong></p>
+<p>Before AI: execution was slow and error-prone, so you built systems to catch execution errors.</p>
+<p>After AI: execution is fast and getting more reliable every month, so the bottleneck moved to decision propagation. Are the right people building against the right assumptions? Does everyone have the current spec? When something changes, who needs to know?</p>
+<p>These aren't new questions. What's new is that the cost of getting them wrong went from "a few days of rework" to "a few weeks of rework at AI-accelerated speed."</p>
+<h2>What This Means For Your Team</h2>
+<p>If your team adopted AI coding tools in the last year, run this diagnostic:</p>
+<p><strong>Count the spec changes from your last sprint.</strong> Not bugs. Not code changes. Actual product decision changes: scope adjustments, requirement modifications, priority shifts.</p>
+<p><strong>For each change, ask: was it explicitly propagated to everyone mid-build?</strong> Not "posted in Slack." Actually confirmed that each affected person saw it, understood the impact, and adjusted their work.</p>
+<p><strong>Count the gap.</strong> The number of changes that weren't explicitly propagated is your rework exposure.</p>
+<p>Most teams we talk to are at 50-70%. That means half their scope changes travel one hop (PM posts update) but never complete the journey (affected engineers acknowledge and adjust).</p>
+<p>Before AI, this gap produced moderate rework. With AI, it produces massive rework because the team built more, faster, against stale assumptions.</p>
+<h2>The Missing Layer</h2>
+<p>Your team has version control for code. CI/CD for builds. Monitoring for production. Issue tracking for work.</p>
+<p>What's the system for propagating decisions?</p>
+<p>Right now, for most teams, the answer is: Slack messages, Jira comments, and standup mentions. That was adequate when the cost of wrong decisions was low relative to the cost of bugs. It's not adequate anymore.</p>
+<p>The teams that figure this out first will have a structural advantage. Not because they write better code. Because they waste less of their increasingly cheap code production on solving the wrong problems.</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>

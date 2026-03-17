@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agencies Have SOWs. Internal Teams Have Slack Threads. — An Pham</title>
+<meta name="description" content="External teams have contracts and change orders. Internal teams have Slack messages and assumptions. That structural gap is why your retros keep saying "better communication" every sprint.">
+<meta property="og:title" content="Agencies Have SOWs. Internal Teams Have Slack Threads.">
+<meta property="og:description" content="External teams have contracts and change orders. Internal teams have Slack messages and assumptions. That structural gap is why your retros keep saying "better communication" every sprint.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anpham.dev/posts/agencies-have-sows/">
+<link rel="icon" type="image/jpeg" href="/favicon.jpg">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="site-name">An Pham</a>
+    <div class="nav-links">
+      <a href="/">Blog</a>
+      <a href="/about/">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <article>
+    <header>
+      <h1>Agencies Have SOWs. Internal Teams Have Slack Threads.</h1>
+      <div class="article-meta">March 16, 2026 · 5 min read</div>
+      <div class="article-tags">
+        <span class="post-tag">Change Management</span><span class="post-tag">Software Delivery</span><span class="post-tag">Meetless</span>
+      </div>
+    </header>
+
+    <div class="content">
+<p>When an agency changes scope, everyone knows. When an internal team changes scope, nobody knows until someone ships the wrong thing.</p>
+<p>If you've ever worked with an external agency, you know the drill. The project starts with a Statement of Work. Change the scope? New SOW. Or at minimum a change order that both sides sign. There's a paper trail, there's a cost line, there's a moment where someone says "this changes the deliverable and here's what it means."</p>
+<p>Nobody loves the paperwork. But it works. Both sides know what's being built, what changed, and who agreed to it.</p>
+<p>Now look at how your internal product team handles the exact same thing.</p>
+<h2>The Internal Team Version</h2>
+<p>PM realizes the payment flow needs offline support. Not a small change. Affects three engineers, one QA, and the sprint timeline.</p>
+<p>Here's what happens:</p>
+<p>PM updates the Jira ticket description. Adds two sentences at the bottom. Posts in the team Slack channel: "heads up, updated PAY-247 with offline requirements." Mentions it in standup the next morning.</p>
+<p>That's the internal "change order."</p>
+<p>No formal record of what changed. No explicit list of who's affected. No sign-off from the people who are mid-build against the old spec. No acknowledgment that anyone actually read the update, understood the implications, and adjusted their work.</p>
+<p>The PM did everything right by current norms. They communicated. They updated the ticket. They mentioned it in standup.</p>
+<p>And two engineers still shipped against the old spec because one was in a different channel and the other read the ticket Monday before the edit.</p>
+<h2>Why This Keeps Happening</h2>
+<p>The structural difference is obvious once you see it:</p>
+<p>Agency work has a formal scope boundary because money is crossing that boundary. When dollars are attached to deliverables, both sides have an incentive to document exactly what's being built and flag when it changes. The SOW isn't about trust or distrust. It's about clarity. Both sides want it because ambiguity costs money.</p>
+<p>Internal work has no scope boundary because it's all one team, one budget, one org chart. The assumption is that everyone is aligned because everyone is on the same side. Information should just flow. People should just know.</p>
+<p>Except they don't. The information doesn't flow because there's no mechanism forcing it to flow. There's no SOW. There's no change order. There's no moment where the change is made explicit, the affected people are identified, and acknowledgment is collected.</p>
+<p>There's a Slack message and an assumption.</p>
+<h2>The Cost Nobody Measures</h2>
+<p>Agencies track scope changes because they're billable. Internal teams don't track scope changes because they're "just communication overhead."</p>
+<p>But the cost is real. It just shows up differently.</p>
+<p>It shows up as a sprint that runs 4 days long with no obvious reason. As a QA cycle where 23 tests were written against a spec that changed last Tuesday. As a retro where the action item is "better communication" for the third sprint in a row.</p>
+<p>One team we talked to traced it. A single spec change posted in Slack, not seen by two engineers who were mid-build. Result: 135 hours of rework. About $27,000 in engineering time, plus a 3-week slip on the release.</p>
+<p>That's one change. One sprint. One team.</p>
+<p>Most teams have 3 to 5 of these per sprint. Nobody counts them because each one feels like normal coordination overhead. It's not overhead. It's the cost of having no formal scope boundary inside your own org.</p>
+<h2>What an Internal SOW Would Actually Look Like</h2>
+<p>You don't need a 12-page legal document. You need four things:</p>
+<p><strong>What changed.</strong> Not the whole spec. Just the delta. What was true before, what's true now, and why.</p>
+<p><strong>Who's affected.</strong> Specifically. Not "the team." Which engineers are mid-build against assumptions this change invalidates? Which QA tests need updating? Which downstream teams need to know?</p>
+<p><strong>Explicit acknowledgment.</strong> Not "I posted it in Slack." Actual confirmation from each affected person that they saw the change, understood the impact, and adjusted their work. A read receipt for scope changes.</p>
+<p><strong>An audit trail.</strong> Six months from now, when someone asks "who signed off on cutting offline support," the answer shouldn't require archaeology through 200 messages in a Slack thread. It should be one click.</p>
+<p>That's it. Four things. Takes about 2 minutes to document per change. Saves days of rework per sprint.</p>
+<h2>The Objection I Always Hear</h2>
+<p>"This adds process overhead. We're a startup. We move fast. We can't add bureaucracy."</p>
+<p>I get it. But consider what you're really saying: "We'd rather absorb 3-5 untracked scope changes per sprint, each potentially costing days of rework, than spend 2 minutes documenting what changed and confirming the right people saw it."</p>
+<p>The SOW isn't bureaucracy. It's the cheapest insurance policy in software delivery. Agencies figured this out decades ago because they had to. Internal teams haven't figured it out because the cost is invisible.</p>
+<p>It stays invisible until the demo, when someone opens the build and says the five most expensive words in product development:</p>
+<p>"Wait, who signed off on this?"</p>
+    </div>
+  </article>
+
+  <footer>
+    <p>An Pham · Atlanta, GA · <a href="https://www.linkedin.com/in/an-pham-atl/" target="_blank">LinkedIn</a></p>
+  </footer>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (html.classList.contains('light')) {
+    html.classList.remove('light');
+    btn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    html.classList.add('light');
+    btn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const btn = document.querySelector('.theme-toggle');
+  if (saved === 'light' || (!saved && !prefersDark)) {
+    document.documentElement.classList.add('light');
+    btn.textContent = 'Dark';
+  }
+})();
+</script>
+</body>
+</html>
